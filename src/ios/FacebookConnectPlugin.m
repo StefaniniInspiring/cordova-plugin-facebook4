@@ -31,33 +31,6 @@
 
 - (void)pluginInitialize {
     NSLog(@"Starting Facebook Connect plugin");
-
-    // Add notification listener for tracking app activity with FB Events
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationDidFinishLaunching:)
-                                                 name:UIApplicationDidFinishLaunchingNotification object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationDidBecomeActive:)
-                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
-}
-
-- (void) applicationDidFinishLaunching:(NSNotification *) notification {
-    NSDictionary* launchOptions = notification.userInfo;
-    if (launchOptions == nil) {
-        //launchOptions is nil when not start because of notification or url open
-        launchOptions = [NSDictionary dictionary];
-    }
-
-    [[FBSDKApplicationDelegate sharedInstance] application:[UIApplication sharedApplication] didFinishLaunchingWithOptions:launchOptions];
-}
-
-- (void) applicationDidBecomeActive:(NSNotification *) notification {
-    [FBSDKAppEvents activateApp];
-    if (self.applicationWasActivated == NO) {
-        self.applicationWasActivated = YES;
-        [self enableHybridAppEvents];
-    }
 }
 
 #pragma mark - Cordova commands
