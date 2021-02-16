@@ -31,6 +31,8 @@
 
 - (void)pluginInitialize {
     NSLog(@"Starting Facebook Connect plugin");
+
+    NSLog(@">>>Facebook Connect Plugin modified version<<<");
 }
 
 #pragma mark - Cordova commands
